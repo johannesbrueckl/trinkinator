@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:trinkinator/features/main_menu.dart';
 import 'package:trinkinator/components/old_code.dart';
 
 class App extends StatelessWidget {
