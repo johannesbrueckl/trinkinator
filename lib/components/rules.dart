@@ -4,9 +4,7 @@ void rules(BuildContext context) {
   Navigator.of(context)
       .push(MaterialPageRoute<void>(builder: (BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Regelwerk'),
-        ),
+        appBar: AppBar(),
         body: ListView(
           shrinkWrap: true,
           padding: const EdgeInsets.all(20.0),

@@ -236,30 +236,33 @@ class _GameState extends State<Game> {
     Navigator.of(context)
         .push(MaterialPageRoute<void>(builder: (BuildContext context) {
       return Scaffold(
+          appBar: AppBar(
+            title: const Text('Spieler wählen'),
+          ),
           body: ListView.builder(
-        padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 30),
-        itemCount: namen.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Card(
-              margin: const EdgeInsets.symmetric(vertical: 10),
-              shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(18))),
-              child: ListTile(
-                onTap: () => {
-                  Navigator.pop(context),
-                  spieleranzahl = index + 1,
-                  ++spielerGesetzt,
-                  _spielerAlertDialog(context)
-                },
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(18))),
-                tileColor: Colors.blue,
-                title: Text(namen[index], textAlign: TextAlign.center),
-                titleTextStyle: const TextStyle(fontSize: 30),
-                minVerticalPadding: 30,
-              ));
-        },
-      ));
+            padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 30),
+            itemCount: namen.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Card(
+                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(18))),
+                  child: ListTile(
+                    onTap: () => {
+                      Navigator.pop(context),
+                      spieleranzahl = index + 1,
+                      ++spielerGesetzt,
+                      _spielerAlertDialog(context)
+                    },
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(18))),
+                    tileColor: Colors.blue,
+                    title: Text(namen[index], textAlign: TextAlign.center),
+                    titleTextStyle: const TextStyle(fontSize: 30),
+                    minVerticalPadding: 30,
+                  ));
+            },
+          ));
     }));
   }
 
@@ -267,9 +270,7 @@ class _GameState extends State<Game> {
     Navigator.of(context)
         .push(MaterialPageRoute<void>(builder: (BuildContext context) {
       return Scaffold(
-          appBar: AppBar(
-            title: const Text('Regelwerk'),
-          ),
+          appBar: AppBar(),
           body: Center(
               child: ListView(
             shrinkWrap: true,
