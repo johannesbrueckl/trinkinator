@@ -73,22 +73,6 @@ void rules(BuildContext context) {
                   text:
                       'Bei Ich \'habe noch nie...!\' Aufgaben werden immer 3 Schluecke genommen.\nAlternativ kann man sich VOR jeder Partie auf eine andere Anzahl der Schluecke mit allen Spielern einigen die dann fuer alle gilt.\n\n',
                   style: TextStyle(fontSize: 25.0)),
-              TextSpan(
-                  text: 'Regel Nr 7:\n\n',
-                  style:
-                      TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold)),
-              TextSpan(
-                  text:
-                      'Zivilpolizisten und verdeckte Ermittler sind auf Lebenszeit von der Teilname an diesem Spiel ausgeschlossen.\nAlle Ermittler haben kleine Schwaenze!\n\n',
-                  style: TextStyle(fontSize: 25.0)),
-              TextSpan(
-                  text: 'Regel Nr 8:\n\n',
-                  style:
-                      TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold)),
-              TextSpan(
-                  text:
-                      'Wenn du dich mit dem Teufel einlaesst, veraendert sich nicht der Teufel. Der Teufel veraendert dich.\n',
-                  style: TextStyle(fontSize: 25.0)),
             ])),
             ElevatedButton(
                 onPressed: () {
