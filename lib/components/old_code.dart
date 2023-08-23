@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 import 'package:trinkinator/components/game.dart';
+import 'package:trinkinator/components/players.dart';
 import 'package:trinkinator/components/rules.dart';
 
 class Game extends StatefulWidget {
@@ -69,7 +70,7 @@ class _GameState extends State<Game> {
     'Spieler 8'
   ];
   int spieleranzahl = 7;
-  int spielerGesetzt = 0;
+  bool spielerGesetzt = false;
   Random random = Random();
 
   @override
@@ -117,7 +118,7 @@ class _GameState extends State<Game> {
             ),
             ElevatedButton(
                 onPressed: () {
-                  if (spielerGesetzt == 0) {
+                  if (!spielerGesetzt) {
                     _gameAlertDialog(context);
                   } else {
                     int i = 0, j = 0;
@@ -146,8 +147,21 @@ class _GameState extends State<Game> {
               style: TextStyle(fontSize: 7.0),
             ),
             ElevatedButton(
-                onPressed: () {
-                  return _spielerzahl(context);
+                onPressed: () async {
+                  final result = await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Players(
+                              namen: namen,
+                              spieleranzahl: spieleranzahl,
+                            )),
+                  );
+                  if (!mounted) return;
+                  if (result != null) {
+                    spielerGesetzt = true;
+                    spieleranzahl = result;
+                    _spielerAlertDialog(context);
+                  }
                 },
                 style: raisedButtonStyle,
                 child: const Text('\nAnzahl der Spieler waehlen\n',
@@ -223,47 +237,6 @@ class _GameState extends State<Game> {
         );
       },
     );
-  }
-
-  void _blankScreen(BuildContext context) {
-    Navigator.of(context)
-        .push(MaterialPageRoute<void>(builder: (BuildContext context) {
-      return const Scaffold();
-    }));
-  }
-
-  void _spielerzahl(BuildContext context) {
-    Navigator.of(context)
-        .push(MaterialPageRoute<void>(builder: (BuildContext context) {
-      return Scaffold(
-          appBar: AppBar(
-            title: const Text('Spieler wählen'),
-          ),
-          body: ListView.builder(
-            padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 30),
-            itemCount: namen.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Card(
-                  margin: const EdgeInsets.symmetric(vertical: 10),
-                  shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(18))),
-                  child: ListTile(
-                    onTap: () => {
-                      Navigator.pop(context),
-                      spieleranzahl = index + 1,
-                      ++spielerGesetzt,
-                      _spielerAlertDialog(context)
-                    },
-                    shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(18))),
-                    tileColor: Colors.blue,
-                    title: Text(namen[index], textAlign: TextAlign.center),
-                    titleTextStyle: const TextStyle(fontSize: 30),
-                    minVerticalPadding: 30,
-                  ));
-            },
-          ));
-    }));
   }
 
   void _beschwerde(BuildContext context) {

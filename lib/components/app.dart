@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:trinkinator/components/old_code.dart';
 import 'package:trinkinator/components/game.dart';
+import 'package:trinkinator/components/players.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -20,6 +21,9 @@ class App extends StatelessWidget {
         home: const Game(),
         routes: {
           '/play': (context) => StartGame(),
+          '/players': (context) => Players(
+                namen: const [],
+              )
         },
       ),
     );
