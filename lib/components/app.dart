@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:trinkinator/components/old_code.dart';
+import 'package:trinkinator/components/game.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -14,9 +15,12 @@ class App extends StatelessWidget {
         title: 'Trinkinator',
         theme: ThemeData(
           useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         ),
-        home: const Trinkinator(),
+        home: const Game(),
+        routes: {
+          '/play': (context) => StartGame(),
+        },
       ),
     );
   }
