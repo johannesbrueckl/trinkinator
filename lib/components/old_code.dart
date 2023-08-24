@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:trinkinator/components/app.dart';
 import 'dart:math';
 
 import 'package:trinkinator/components/game.dart';
 import 'package:trinkinator/components/players.dart';
 import 'package:trinkinator/components/rules.dart';
-
-class Game extends StatefulWidget {
-  const Game({super.key});
-
-  @override
-  _GameState createState() => _GameState();
-}
+import 'package:trinkinator/components/temp.dart';
 
 final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
   foregroundColor: Colors.greenAccent[400],
@@ -21,7 +17,7 @@ final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
       side: BorderSide(color: Colors.blueGrey)),
 );
 
-class _GameState extends State<Game> {
+class Game extends ConsumerWidget {
   static const List<String> aufgaben = [
     //34 Aufgaben.
     "Trinke selbst 1 Schluck.",
@@ -59,49 +55,18 @@ class _GameState extends State<Game> {
     "Fred Fred Manfred! Ab jetzt musst du in jedem Satz einbauen wie schwer beschaeftigt du heute nicht warst. Bei vergessen Trinken.",
     "Kondom gerissen! Dir ist beim Liebesspiel das Kondom gerissen. Trinke auf Ex und einen Kurzen um die Pille danach zu kaufen ODER trinke ab naechster Runde jedes Mal wenn du an der Reihe bist einen Kurzen bis zum Ende des Spieles um deine Alimente zu begleichen."
   ];
-  List<String> namen = [
-    'Spieler 1',
-    'Spieler 2',
-    'Spieler 3',
-    'Spieler 4',
-    'Spieler 5',
-    'Spieler 6',
-    'Spieler 7',
-    'Spieler 8'
-  ];
   int spieleranzahl = 7;
-  bool spielerGesetzt = false;
   Random random = Random();
 
+  Game({super.key});
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    var players = ref.watch(playerNamesProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Trinkinator'),
       ),
-      /*
-        body: ListView.builder(
-          padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 30),
-          itemCount: menuEntryFuns.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Card(
-                margin: const EdgeInsets.symmetric(vertical: 10),
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(18))),
-                child: ListTile(
-                  onTap: () => {menuEntryFuns[index]},
-                  shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(18))),
-                  tileColor: Colors.blue,
-                  title:
-                      Text(menuEntryNames[index], textAlign: TextAlign.center),
-                  titleTextStyle: const TextStyle(fontSize: 30),
-                  minVerticalPadding: 30,
-                ));
-          },
-        )
-        */
-
       body: ListView(
           shrinkWrap: true,
           padding: const EdgeInsets.all(40.0),
@@ -118,7 +83,7 @@ class _GameState extends State<Game> {
             ),
             ElevatedButton(
                 onPressed: () {
-                  if (!spielerGesetzt) {
+                  if (players.isEmpty) {
                     _gameAlertDialog(context);
                   } else {
                     int i = 0, j = 0;
@@ -131,8 +96,8 @@ class _GameState extends State<Game> {
                                 j: j,
                                 i: i,
                                 aufgaben: aufgaben,
-                                namen: namen,
-                                spieleranzahl: spieleranzahl,
+                                namen: players,
+                                spieleranzahl: players.length,
                               )),
                     );
                   }
@@ -147,21 +112,11 @@ class _GameState extends State<Game> {
               style: TextStyle(fontSize: 7.0),
             ),
             ElevatedButton(
-                onPressed: () async {
-                  final result = await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Players(
-                              namen: namen,
-                              spieleranzahl: spieleranzahl,
-                            )),
-                  );
-                  if (!mounted) return;
-                  if (result != null) {
-                    spielerGesetzt = true;
-                    spieleranzahl = result;
-                    _spielerAlertDialog(context);
-                  }
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ListTileSelectExample()));
                 },
                 style: raisedButtonStyle,
                 child: const Text('\nAnzahl der Spieler waehlen\n',
@@ -250,7 +205,7 @@ class _GameState extends State<Game> {
             padding: const EdgeInsets.all(20.0),
             children: [
               const Text(
-                'Du Opfer, wir haben dich doch sowieso nur mitgenommen damit wir auf den Behindertenparkplatz koennen.\nKritik wird nicht geduldet, siehe Regel Nr1!\nTrinke 3 Strafschluecke!\n',
+                'Kritik wird nicht geduldet, siehe Regel Nr1!\nTrinke 3 Strafschluecke!\n',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 30.0),
               ),
