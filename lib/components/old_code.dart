@@ -6,7 +6,7 @@ import 'dart:math';
 import 'package:trinkinator/components/game.dart';
 import 'package:trinkinator/components/players.dart';
 import 'package:trinkinator/components/rules.dart';
-import 'package:trinkinator/components/addPlayers.dart';
+import 'package:trinkinator/components/add_players.dart';
 
 final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
   foregroundColor: Colors.greenAccent[400],
