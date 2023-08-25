@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:trinkinator/components/old_code.dart';
 import 'package:trinkinator/components/game.dart';
 import 'package:trinkinator/components/players.dart';
-import 'package:trinkinator/components/addPlayers.dart';
+import 'package:trinkinator/components/add_players.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -32,6 +32,6 @@ class App extends StatelessWidget {
   }
 }
 
-class AppState extends ChangeNotifier {}
+//class AppState extends ChangeNotifier {}
 
 final playerNamesProvider = StateProvider<List<String>>((ref) => []);
