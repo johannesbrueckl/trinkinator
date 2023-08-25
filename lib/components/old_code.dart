@@ -6,7 +6,7 @@ import 'dart:math';
 import 'package:trinkinator/components/game.dart';
 import 'package:trinkinator/components/players.dart';
 import 'package:trinkinator/components/rules.dart';
-import 'package:trinkinator/components/temp.dart';
+import 'package:trinkinator/components/addPlayers.dart';
 
 final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
   foregroundColor: Colors.greenAccent[400],
@@ -113,10 +113,8 @@ class Game extends ConsumerWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ListTileSelectExample()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => AddPlayers()));
                 },
                 style: raisedButtonStyle,
                 child: const Text('\nAnzahl der Spieler waehlen\n',
