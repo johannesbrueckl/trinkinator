@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:trinkinator/components/old_code.dart';
 import 'package:trinkinator/components/game.dart';
-import 'package:trinkinator/components/players.dart';
 import 'package:trinkinator/components/add_players.dart';
 
 class App extends StatelessWidget {
@@ -21,7 +20,7 @@ class App extends StatelessWidget {
       home: Game(),
       routes: {
         '/play': (context) => StartGame(),
-        '/players': (context) => AddPlayers()
+        '/players': (context) => const AddPlayers()
         /*
         Players(
               namen: const [],

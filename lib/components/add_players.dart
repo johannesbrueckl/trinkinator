@@ -32,6 +32,7 @@ class AddPlayersState extends ConsumerState {
             child: const Text('Add'),
             onPressed: () {
               ref.read(playerNamesProvider).add(nameController.text);
+              nameController.clear();
             },
           ),
           Expanded(

@@ -4,7 +4,6 @@ import 'package:trinkinator/components/app.dart';
 import 'dart:math';
 
 import 'package:trinkinator/components/game.dart';
-import 'package:trinkinator/components/players.dart';
 import 'package:trinkinator/components/rules.dart';
 import 'package:trinkinator/components/add_players.dart';
 
@@ -113,11 +112,13 @@ class Game extends ConsumerWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AddPlayers()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AddPlayers()));
                 },
                 style: raisedButtonStyle,
-                child: const Text('\nAnzahl der Spieler waehlen\n',
+                child: const Text('\nSpieler hinzufügen\n',
                     style: TextStyle(fontSize: 30.0),
                     textAlign: TextAlign.center)),
             const Text(
@@ -167,7 +168,7 @@ class Game extends ConsumerWidget {
       builder: (BuildContext context) {
         Future.delayed(const Duration(seconds: 2));
         return const AlertDialog(
-          title: Text("Bitte erst Spieleranzhal waehlen",
+          title: Text("Bitte zuerst Spieler hinzufügen",
               textAlign: TextAlign.center, style: TextStyle(fontSize: 25.0)),
           elevation: 24.0,
           //shape: CircleBorder(),
