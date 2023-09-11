@@ -1,29 +1,21 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-class StartGame extends StatefulWidget {
-  var j;
-  var i;
-  var aufgaben;
-  var namen;
-  var spieleranzahl;
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:trinkinator/components/app.dart';
 
-  StartGame(
-      {super.key,
-      this.j,
-      this.i,
-      this.aufgaben,
-      this.namen,
-      this.spieleranzahl});
+class StartGame extends ConsumerStatefulWidget {
+  const StartGame({super.key});
 
   @override
-  State<StartGame> createState() => _StartGameState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _StartGameState();
 }
 
-class _StartGameState extends State<StartGame> {
+class _StartGameState extends ConsumerState {
+  var roundCounter = 0;
   @override
   Widget build(BuildContext context) {
-    Random random = Random();
+    var players = ref.read(playerNamesProvider);
     return Scaffold(
         appBar: AppBar(),
         body: Center(
@@ -34,18 +26,15 @@ class _StartGameState extends State<StartGame> {
               displayAufgabe(),
               TextButton(
                 onPressed: () {
-                  if (widget.j == widget.spieleranzahl - 1) {
+                  if (roundCounter == players.length - 1) {
                     setState(() {
-                      widget.j = 0;
+                      roundCounter = 0;
                     });
                   } else {
                     setState(() {
-                      ++widget.j;
+                      ++roundCounter;
                     });
                   }
-
-                  //Navigator.pop(context);
-                  //return StartGame(context, j, i, aufgaben, namen, spieleranzahl);
                 },
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.white,
@@ -60,18 +49,19 @@ class _StartGameState extends State<StartGame> {
 
   Text displayAufgabe() {
     Random random = Random();
+    var players = ref.read(playerNamesProvider);
+    var tasks = ref.read(tasksProvider);
     return Text.rich(
       TextSpan(
         children: <TextSpan>[
           TextSpan(
-              text: '${widget.namen[widget.j]}\n\n',
+              text: '${players[roundCounter]}\n\n',
               style: const TextStyle(
                   fontSize: 35.0,
                   color: Colors.deepOrangeAccent,
                   fontWeight: FontWeight.bold)),
           TextSpan(
-              text:
-                  '${widget.aufgaben[random.nextInt(34)]}\n', //Anzahl der Aufgaben.
+              text: '${tasks[random.nextInt(34)]}\n', //Anzahl der Aufgaben.
               style: const TextStyle(fontSize: 30.0, color: Colors.black)),
         ],
       ),

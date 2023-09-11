@@ -31,8 +31,8 @@ class AddPlayersState extends ConsumerState {
           FilledButton(
             child: const Text('Add'),
             onPressed: () {
-              if (nameController.text.isNotEmpty) {
-                ref.read(playerNamesProvider).add(nameController.text);
+              if (nameController.text.trim().isNotEmpty) {
+                ref.read(playerNamesProvider).add(nameController.text.trim());
                 nameController.clear();
               } else {
                 playerNameEmptyAlert(context);
