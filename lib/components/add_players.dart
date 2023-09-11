@@ -24,15 +24,19 @@ class AddPlayersState extends ConsumerState {
               controller: nameController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Player Name',
+                labelText: 'Spielername',
               ),
             ),
           ),
           FilledButton(
             child: const Text('Add'),
             onPressed: () {
-              ref.read(playerNamesProvider).add(nameController.text);
-              nameController.clear();
+              if (nameController.text.isNotEmpty) {
+                ref.read(playerNamesProvider).add(nameController.text);
+                nameController.clear();
+              } else {
+                playerNameEmptyAlert(context);
+              }
             },
           ),
           Expanded(
@@ -58,4 +62,22 @@ class AddPlayersState extends ConsumerState {
                   }))
         ]));
   }
+}
+
+Future<void> playerNameEmptyAlert(BuildContext context) async {
+  showDialog<void>(
+    context: context,
+    barrierDismissible: true,
+    builder: (BuildContext context) {
+      Future.delayed(const Duration(seconds: 2), () {
+        Navigator.of(context).pop();
+      });
+      return const AlertDialog(
+        title: Text("Spielername darf nicht leer sein",
+            textAlign: TextAlign.center, style: TextStyle(fontSize: 25.0)),
+        elevation: 24.0,
+        //shape: CircleBorder(),
+      );
+    },
+  );
 }

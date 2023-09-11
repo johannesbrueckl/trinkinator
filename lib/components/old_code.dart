@@ -165,7 +165,9 @@ class Game extends ConsumerWidget {
       context: context,
       barrierDismissible: true,
       builder: (BuildContext context) {
-        Future.delayed(const Duration(seconds: 2));
+        Future.delayed(const Duration(seconds: 2), () {
+          Navigator.of(context).pop();
+        });
         return const AlertDialog(
           title: Text("Bitte zuerst Spieler hinzufügen",
               textAlign: TextAlign.center, style: TextStyle(fontSize: 25.0)),
