@@ -54,7 +54,6 @@ class Game extends ConsumerWidget {
     "Fred Fred Manfred! Ab jetzt musst du in jedem Satz einbauen wie schwer beschaeftigt du heute nicht warst. Bei vergessen Trinken.",
     "Kondom gerissen! Dir ist beim Liebesspiel das Kondom gerissen. Trinke auf Ex und einen Kurzen um die Pille danach zu kaufen ODER trinke ab naechster Runde jedes Mal wenn du an der Reihe bist einen Kurzen bis zum Ende des Spieles um deine Alimente zu begleichen."
   ];
-  int spieleranzahl = 7;
   Random random = Random();
 
   Game({super.key});
@@ -170,22 +169,6 @@ class Game extends ConsumerWidget {
         return const AlertDialog(
           title: Text("Bitte zuerst Spieler hinzufügen",
               textAlign: TextAlign.center, style: TextStyle(fontSize: 25.0)),
-          elevation: 24.0,
-          //shape: CircleBorder(),
-        );
-      },
-    );
-  }
-
-  void _spielerAlertDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        Future.delayed(const Duration(seconds: 1));
-        return AlertDialog(
-          title: Text("$spieleranzahl Spieler gewählt",
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 25.0)),
           elevation: 24.0,
           //shape: CircleBorder(),
         );
