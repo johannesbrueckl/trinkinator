@@ -32,7 +32,11 @@ class AddPlayersState extends ConsumerState {
             child: const Text('Add'),
             onPressed: () {
               if (nameController.text.trim().isNotEmpty) {
-                ref.read(playerNamesProvider).add(nameController.text.trim());
+                final oldPlayers = ref.read(playerNamesProvider);
+                ref.read(playerNamesProvider.notifier).state = [
+                  ...oldPlayers,
+                  nameController.text.trim()
+                ];
                 nameController.clear();
               } else {
                 playerNameEmptyAlert(context);
@@ -55,7 +59,12 @@ class AddPlayersState extends ConsumerState {
                               iconSize: 30,
                               splashRadius: 20,
                               onPressed: () {
-                                ref.read(playerNamesProvider).removeAt(index);
+                                final trimedPlayers =
+                                    ref.read(playerNamesProvider);
+                                trimedPlayers.removeAt(index);
+                                ref.read(playerNamesProvider.notifier).state = [
+                                  ...trimedPlayers
+                                ];
                               },
                             ),
                             title: Text(players.elementAt(index))));
