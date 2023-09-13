@@ -76,7 +76,6 @@ Future<void> playerNameEmptyAlert(BuildContext context) async {
         title: Text("Spielername darf nicht leer sein",
             textAlign: TextAlign.center, style: TextStyle(fontSize: 25.0)),
         elevation: 24.0,
-        //shape: CircleBorder(),
       );
     },
   );
