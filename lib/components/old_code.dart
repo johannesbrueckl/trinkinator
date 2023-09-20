@@ -6,6 +6,8 @@ import 'package:trinkinator/components/game.dart';
 import 'package:trinkinator/components/rules.dart';
 import 'package:trinkinator/components/add_players.dart';
 
+import 'logger.dart';
+
 final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
   foregroundColor: Colors.greenAccent[400],
   minimumSize: const Size(88, 36),
@@ -112,12 +114,18 @@ class Game extends ConsumerWidget {
   }
 
   Future<void> _gameAlertDialog(BuildContext context) async {
-    showDialog<void>(
+    final logger = getLogger();
+    showDialog<String>(
       context: context,
       barrierDismissible: true,
       builder: (BuildContext context) {
         Future.delayed(const Duration(seconds: 2), () {
-          Navigator.of(context).pop();
+          try {
+            //unsafe error thrown here, fine for now. needs fixing later.
+            Navigator.of(context).pop();
+          } catch (e) {
+            logger.e(e);
+          }
         });
         return const AlertDialog(
           title: Text("Bitte zuerst Spieler hinzufügen",
