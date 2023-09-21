@@ -40,6 +40,7 @@ class AddPlayersState extends ConsumerState {
                 nameController.clear();
               } else {
                 playerNameEmptyAlert(context);
+                nameController.clear();
               }
             },
           ),
