@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:trinkinator/components/app.dart';
-import 'package:trinkinator/components/logger.dart';
 
 class AddPlayers extends ConsumerStatefulWidget {
   const AddPlayers({super.key});
@@ -41,7 +40,6 @@ class AddPlayersState extends ConsumerState {
                 nameController.clear();
               } else {
                 playerNameEmptyAlert(context);
-                nameController.clear();
               }
             },
           ),
@@ -76,18 +74,12 @@ class AddPlayersState extends ConsumerState {
 }
 
 Future<void> playerNameEmptyAlert(BuildContext context) async {
-  final logger = getLogger();
   showDialog<void>(
     context: context,
     barrierDismissible: true,
     builder: (BuildContext context) {
       Future.delayed(const Duration(seconds: 2), () {
-        try {
-          //unsafe error thrown here, fine for now. needs fixing later.
-          Navigator.of(context).pop();
-        } catch (e) {
-          logger.e(e);
-        }
+        Navigator.of(context).pop();
       });
       return const AlertDialog(
         title: Text("Spielername darf nicht leer sein",

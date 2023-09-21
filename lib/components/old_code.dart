@@ -20,8 +20,6 @@ final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
 class Game extends ConsumerWidget {
   const Game({super.key});
 
-  static const _gap = SizedBox(height: 20);
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var players = ref.watch(playerNamesProvider);
@@ -38,33 +36,32 @@ class Game extends ConsumerWidget {
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 45.0),
             ),
-            _gap,
-            Visibility(
-              replacement: ElevatedButton(
-                  onPressed: null,
-                  style: raisedButtonStyle,
-                  child: const Text('\nKeine Spieler hinzugefügt\n',
-                      style: TextStyle(fontSize: 30.0),
-                      textAlign: TextAlign.center)),
-              visible: players.isNotEmpty,
-              child: ElevatedButton(
-                  onPressed: () {
-                    if (players.isNotEmpty) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const StartGame()),
-                      );
-                    } else {
-                      _gameAlertDialog(context);
-                    }
-                  },
-                  style: raisedButtonStyle,
-                  child: const Text('\nAlkohol fliessen lassen\n',
-                      style: TextStyle(fontSize: 30.0),
-                      textAlign: TextAlign.center)),
+            const Text(
+              '\n',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 7.0),
             ),
-            _gap,
+            ElevatedButton(
+                onPressed: () {
+                  if (players.isNotEmpty) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const StartGame()),
+                    );
+                  } else {
+                    _gameAlertDialog(context);
+                  }
+                },
+                style: raisedButtonStyle,
+                child: const Text('\nAlkohol fliessen lassen\n',
+                    style: TextStyle(fontSize: 30.0),
+                    textAlign: TextAlign.center)),
+            const Text(
+              '\n',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 7.0),
+            ),
             ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -76,7 +73,11 @@ class Game extends ConsumerWidget {
                 child: const Text('\nSpieler hinzufügen\n',
                     style: TextStyle(fontSize: 30.0),
                     textAlign: TextAlign.center)),
-            _gap,
+            const Text(
+              '\n',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 7.0),
+            ),
             ElevatedButton(
                 onPressed: () {
                   return rules(context);
@@ -85,7 +86,11 @@ class Game extends ConsumerWidget {
                 child: const Text('\nRegeln einsehen\n',
                     style: TextStyle(fontSize: 30.0),
                     textAlign: TextAlign.center)),
-            _gap,
+            const Text(
+              '\n',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 7.0),
+            ),
             ElevatedButton(
                 onPressed: () {
                   return _beschwerde(context);
@@ -94,7 +99,11 @@ class Game extends ConsumerWidget {
                 child: const Text('\nBeschweren\n',
                     style: TextStyle(fontSize: 30.0),
                     textAlign: TextAlign.center)),
-            _gap,
+            const Text(
+              '\n\n\n',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 7.0),
+            ),
             const Text(
               'by Don B',
               textAlign: TextAlign.center,
