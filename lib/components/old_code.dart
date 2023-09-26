@@ -31,12 +31,8 @@ class Game extends ConsumerWidget {
           shrinkWrap: true,
           padding: const EdgeInsets.all(40.0),
           children: <Widget>[
-            const Text(
-              'Game Menu',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 45.0),
-            ),
-            _gap,
+            const Image(
+                image: AssetImage('assets/images/trinkinator-logo.png')),
             Visibility(
               replacement: ElevatedButton(
                   onPressed: null,
