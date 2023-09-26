@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:trinkinator/components/app.dart';
@@ -11,6 +13,11 @@ class AddPlayers extends ConsumerStatefulWidget {
 
 class AddPlayersState extends ConsumerState {
   final TextEditingController nameController = TextEditingController();
+
+  static const String playerNameEmptyAlertMessage =
+      "Spielername darf nicht leer sein";
+  static const String playerNameExistsAlertMessage =
+      "Spielername ist bereits vergeben";
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +38,10 @@ class AddPlayersState extends ConsumerState {
           FilledButton(
             child: const Text('Add'),
             onPressed: () {
-              if (nameController.text.trim().isNotEmpty) {
+              if (players.contains(nameController.text.trim())) {
+                playerNameEmptyAlert(context, playerNameExistsAlertMessage);
+                nameController.clear();
+              } else if (nameController.text.trim().isNotEmpty) {
                 final oldPlayers = ref.read(playerNamesProvider);
                 ref.read(playerNamesProvider.notifier).state = [
                   ...oldPlayers,
@@ -39,7 +49,7 @@ class AddPlayersState extends ConsumerState {
                 ];
                 nameController.clear();
               } else {
-                playerNameEmptyAlert(context);
+                playerNameEmptyAlert(context, playerNameEmptyAlertMessage);
                 nameController.clear();
               }
             },
@@ -74,19 +84,25 @@ class AddPlayersState extends ConsumerState {
   }
 }
 
-Future<void> playerNameEmptyAlert(BuildContext context) async {
+Future<void> playerNameEmptyAlert(BuildContext context, String reason) async {
+  late Timer timer;
   showDialog<void>(
     context: context,
     barrierDismissible: true,
     builder: (BuildContext context) {
-      Future.delayed(const Duration(seconds: 2), () {
+      timer = Timer(const Duration(seconds: 2), () {
         Navigator.of(context).pop();
       });
-      return const AlertDialog(
-        title: Text("Spielername darf nicht leer sein",
-            textAlign: TextAlign.center, style: TextStyle(fontSize: 25.0)),
+      return AlertDialog(
+        title: Text(reason,
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 25.0)),
         elevation: 24.0,
       );
     },
-  );
+  ).then((val) {
+    if (timer.isActive) {
+      timer.cancel();
+    }
+  });
 }
