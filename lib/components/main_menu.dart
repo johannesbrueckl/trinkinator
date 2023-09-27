@@ -8,6 +8,7 @@ import 'package:trinkinator/components/add_players.dart';
 
 final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
   foregroundColor: Colors.greenAccent[400],
+  surfaceTintColor: Colors.amber,
   minimumSize: const Size(88, 36),
   padding: const EdgeInsets.symmetric(horizontal: 16),
   shape: const RoundedRectangleBorder(
@@ -23,20 +24,29 @@ class MainMenu extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var players = ref.watch(playerNamesProvider);
+    //double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Trinkinator'),
-      ),
-      body: ListView(
+        body: Center(
+            child: Container(
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(
+        begin: Alignment.topRight,
+        end: Alignment.bottomLeft,
+        colors: [
+          Colors.transparent,
+          Colors.white,
+        ],
+      )),
+      child: ListView(
           shrinkWrap: true,
           padding: const EdgeInsets.all(40.0),
           children: <Widget>[
-            const Text(
-              'Game Menu',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 45.0),
+            SizedBox(
+              height: height * 0.5,
+              //width: width * 0.8,
+              child: Image.asset('assets/images/trinkinator-logo-removebg.png'),
             ),
-            _gap,
             Visibility(
               replacement: ElevatedButton(
                   onPressed: null,
@@ -95,7 +105,7 @@ class MainMenu extends ConsumerWidget {
               style: TextStyle(fontSize: 12.0),
             )
           ]),
-    );
+    )));
   }
 
   void _beschwerde(BuildContext context) {
