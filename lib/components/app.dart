@@ -35,7 +35,7 @@ class App extends StatelessWidget {
 final playerNamesProvider = StateProvider<List<String>>((ref) => []);
 
 final tasksProvider = StateProvider<List<String>>((ref) => [
-      //34 Aufgaben.
+      //33 Aufgaben.
       "Trinke selbst 1 Schluck.",
       "Trinke selbst 2 Schluecke.",
       "Trinke selbst 3 Schluecke.",
@@ -48,14 +48,13 @@ final tasksProvider = StateProvider<List<String>>((ref) => [
       "Trinke gemeinsam mit dem jüngsten Spieler! Wenn du selbst der jüngste Spieler bist trinke 2 Mal auf die Jugend!",
       "Geschichtestunde! Nenne US-Praesidenten. Fuer jeden richtig genannten darfst du einen Schluck verteilen!",
       "Deutschstunde! Rezitiere ein ganzes literarisches Werk (z.B. ein Gedicht, Reim). Du darfst maximal zwei Zeilen auslassen. Schaffst du es darfst du 10 Schluecke verteilen. Schaffst du es nicht musst du selbst 5 Schluecke trinken.",
-      "Musikunterricht! Singe feestyle fuer mindestens 30 Sekunden was dir gerade in den Sinn kommt oder trinke 5 Schluecke.",
+      "Musikunterricht! Singe feestyle fuer mindestens 10 Sekunden was dir gerade in den Sinn kommt oder trinke 5 Schluecke.",
       "Why so Serious? Joker Time! Jeder Spieler darf eine beaufsichtigte Anzahl an Schluecken nehmen. Diese stehen ihm bis zum Ende dieser Partie zum verteilen zur Verfuegung. (Notieren empfohlen, bitte ehrenvoll auf ausgeglichenen Alkoholgehalt achten! siehe Regel Nr 3).",
       "Trinke 3 Schluecke, Du wirst es schon verdient haben.",
       "Beim Spannen erwischt! Trinke 1 Schluck fuer jeden Spieler des anderen Geschlechts.",
       "Arbeitest du noch an mindestens einem Traum den du als Kind hattest? Wenn die Antwort nein ist dann trinke 2 Kurze zur Strafe!",
       "Kampfjet! Wirf mit einem kleinen Papierkuegelchen nach dem Glas von einem Mitspieler. Wenn du triffst muss er Exen! (Mindestabstand zwei Armlaengen des Opfers).",
-      "Beim Masturbieren erwischt! Ziehe ein Kleidungsstueck (bei Paaren beide) aus oder trinke 6 Schluecke. Selbst schuld du Lustmolch!",
-      "Drinks unter der Dusche! Trinke 2 Schluecke und tu fuer 30 Sekunden so als wurdest du unter der Dusche stehen. Schampoo nicht vergessen.",
+      "Drinks unter der Dusche! Trinke 2 Schluecke und tu fuer 10 Sekunden so als wurdest du unter der Dusche stehen. Schampoo nicht vergessen.",
       "Sportstunde! Mache soviele Liegestuetze wie du kannst. Maenner: 1 Schluck verteilen pro 10 geschafften. Frauen: 1 Schluck verteilen pro 5 geschafften.",
       "Mega Mind! Du darfst dir eine Regel ausdenken, musst dafuer aber 7 Schluecke trinken. Die Entscheidung liegt bei dir!",
       "Tuersteher! Ihr dürft nurnoch aufs Klo gehen, nachdem ihr einen Shot getrunken habt.",

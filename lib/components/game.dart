@@ -61,7 +61,7 @@ class _StartGameState extends ConsumerState {
                   color: Colors.deepOrangeAccent,
                   fontWeight: FontWeight.bold)),
           TextSpan(
-              text: '${tasks[random.nextInt(34)]}\n', //Anzahl der Aufgaben.
+              text: '${tasks[random.nextInt(tasks.length)]}\n',
               style: const TextStyle(fontSize: 30.0, color: Colors.black)),
         ],
       ),
