@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
 import 'package:trinkinator/components/app.dart';
 
 class AddPlayers extends ConsumerStatefulWidget {
@@ -13,6 +14,7 @@ class AddPlayers extends ConsumerStatefulWidget {
 
 class AddPlayersState extends ConsumerState {
   final TextEditingController nameController = TextEditingController();
+  final log = Logger();
 
   static const String playerNameEmptyAlertMessage =
       "Spielername darf nicht leer sein";
@@ -39,6 +41,8 @@ class AddPlayersState extends ConsumerState {
             child: const Text('Add'),
             onPressed: () {
               if (players.contains(nameController.text.trim())) {
+                log.d(
+                    "player name ${nameController.text.trim()} already exists.");
                 playerNameEmptyAlert(context, playerNameExistsAlertMessage);
                 nameController.clear();
               } else if (nameController.text.trim().isNotEmpty) {
@@ -47,8 +51,10 @@ class AddPlayersState extends ConsumerState {
                   ...oldPlayers,
                   nameController.text.trim()
                 ];
+                log.d("player ${nameController.text} added.");
                 nameController.clear();
               } else {
+                log.d("player name is empty.");
                 playerNameEmptyAlert(context, playerNameEmptyAlertMessage);
                 nameController.clear();
               }
@@ -76,6 +82,7 @@ class AddPlayersState extends ConsumerState {
                                 ref.read(playerNamesProvider.notifier).state = [
                                   ...trimedPlayers
                                 ];
+                                log.d("player removed.");
                               },
                             ),
                             title: Text(players.elementAt(index))));
