@@ -5,5 +5,11 @@ import 'package:logger/logger.dart';
 
 void main() {
   Logger.level = Level.debug;
-  runApp(const ProviderScope(child: MaterialApp(home: App())));
+  runApp(
+    const ProviderScope(
+      child: MaterialApp(
+        home: App(),
+      ),
+    ),
+  );
 }

@@ -17,12 +17,12 @@ class _StartGameState extends ConsumerState {
   Widget build(BuildContext context) {
     var players = ref.read(playerNamesProvider);
     return Scaffold(
-        appBar: AppBar(),
-        body: Center(
-            child: ListView(
-                shrinkWrap: true,
-                padding: const EdgeInsets.all(20.0),
-                children: [
+      appBar: AppBar(),
+      body: Center(
+        child: ListView(
+            shrinkWrap: true,
+            padding: const EdgeInsets.all(20.0),
+            children: [
               displayAufgabe(),
               TextButton(
                 onPressed: () {
@@ -44,7 +44,9 @@ class _StartGameState extends ConsumerState {
                 ),
                 child: const Text('Nächste Runde'),
               )
-            ])));
+            ]),
+      ),
+    );
   }
 
   Text displayAufgabe() {
@@ -55,14 +57,16 @@ class _StartGameState extends ConsumerState {
       TextSpan(
         children: <TextSpan>[
           TextSpan(
-              text: '${players[roundCounter]}\n\n',
-              style: const TextStyle(
-                  fontSize: 35.0,
-                  color: Color.fromARGB(255, 227, 70, 22),
-                  fontWeight: FontWeight.bold)),
+            text: '${players[roundCounter]}\n\n',
+            style: const TextStyle(
+                fontSize: 35.0,
+                color: Color.fromARGB(255, 227, 70, 22),
+                fontWeight: FontWeight.bold),
+          ),
           TextSpan(
-              text: '${tasks[random.nextInt(tasks.length)]}\n',
-              style: const TextStyle(fontSize: 30.0, color: Colors.black)),
+            text: '${tasks[random.nextInt(tasks.length)]}\n',
+            style: const TextStyle(fontSize: 30.0, color: Colors.black),
+          ),
         ],
       ),
       textAlign: TextAlign.center,

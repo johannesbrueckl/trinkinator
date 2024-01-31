@@ -41,6 +41,7 @@ class AddPlayersState extends ConsumerState {
             child: const Text(
               'Hinzufügen',
               style: TextStyle(color: Color(0xFF000000)),
+              textAlign: TextAlign.center,
             ),
             onPressed: () {
               if (players.contains(nameController.text.trim())) {
