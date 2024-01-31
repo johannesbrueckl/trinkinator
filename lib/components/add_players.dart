@@ -35,8 +35,11 @@ class AddPlayersState extends ConsumerState {
               ),
             ),
           ),
-          FilledButton(
-            child: const Text('Add'),
+          ElevatedButton(
+            child: const Text(
+              'Hinzufügen',
+              style: TextStyle(color: Color(0xFF000000)),
+            ),
             onPressed: () {
               if (players.contains(nameController.text.trim())) {
                 playerNameEmptyAlert(context, playerNameExistsAlertMessage);

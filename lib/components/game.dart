@@ -42,7 +42,7 @@ class _StartGameState extends ConsumerState {
                   disabledForegroundColor: Colors.grey.withOpacity(0.38),
                   textStyle: const TextStyle(fontSize: 40),
                 ),
-                child: const Text('Naechste Runde'),
+                child: const Text('Nächste Runde'),
               )
             ])));
   }
@@ -58,7 +58,7 @@ class _StartGameState extends ConsumerState {
               text: '${players[roundCounter]}\n\n',
               style: const TextStyle(
                   fontSize: 35.0,
-                  color: Colors.deepOrangeAccent,
+                  color: Color.fromARGB(255, 227, 70, 22),
                   fontWeight: FontWeight.bold)),
           TextSpan(
               text: '${tasks[random.nextInt(tasks.length)]}\n',

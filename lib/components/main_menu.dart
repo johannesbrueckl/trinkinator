@@ -6,20 +6,11 @@ import 'package:trinkinator/components/game.dart';
 import 'package:trinkinator/components/rules.dart';
 import 'package:trinkinator/components/add_players.dart';
 
-final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
-  foregroundColor: Colors.greenAccent[400],
-  surfaceTintColor: Colors.amber,
-  minimumSize: const Size(88, 36),
-  padding: const EdgeInsets.symmetric(horizontal: 16),
-  shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(18)),
-      side: BorderSide(color: Colors.blueGrey)),
-);
-
 class MainMenu extends ConsumerWidget {
   const MainMenu({super.key});
 
   static const _gap = SizedBox(height: 20);
+  static const Color buttonTextColor = Color(0xFF000000);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -34,8 +25,8 @@ class MainMenu extends ConsumerWidget {
         begin: Alignment.topRight,
         end: Alignment.bottomLeft,
         colors: [
-          Colors.transparent,
-          Colors.white,
+          Color(0xFFaed6f1),
+          Color(0xFFaed6f1),
         ],
       )),
       child: ListView(
@@ -45,13 +36,12 @@ class MainMenu extends ConsumerWidget {
             SizedBox(
               height: height * 0.5,
               //width: width * 0.8,
-              child: Image.asset('assets/images/trinkinator-logo-removebg.png'),
+              child: Image.asset('assets/images/trinkinator-logo-oval.png'),
             ),
             Visibility(
-              replacement: ElevatedButton(
+              replacement: const ElevatedButton(
                   onPressed: null,
-                  style: raisedButtonStyle,
-                  child: const Text('\nKeine Spieler hinzugefügt\n',
+                  child: Text('\nKeine Spieler hinzugefügt\n',
                       style: TextStyle(fontSize: 30.0),
                       textAlign: TextAlign.center)),
               visible: players.isNotEmpty,
@@ -63,9 +53,8 @@ class MainMenu extends ConsumerWidget {
                           builder: (context) => const StartGame()),
                     );
                   },
-                  style: raisedButtonStyle,
                   child: const Text('\nAlkohol fliessen lassen\n',
-                      style: TextStyle(fontSize: 30.0),
+                      style: TextStyle(fontSize: 30.0, color: buttonTextColor),
                       textAlign: TextAlign.center)),
             ),
             _gap,
@@ -76,27 +65,24 @@ class MainMenu extends ConsumerWidget {
                       MaterialPageRoute(
                           builder: (context) => const AddPlayers()));
                 },
-                style: raisedButtonStyle,
                 child: const Text('\nSpieler hinzufügen\n',
-                    style: TextStyle(fontSize: 30.0),
+                    style: TextStyle(fontSize: 30.0, color: buttonTextColor),
                     textAlign: TextAlign.center)),
             _gap,
             ElevatedButton(
                 onPressed: () {
                   return rules(context);
                 },
-                style: raisedButtonStyle,
                 child: const Text('\nRegeln einsehen\n',
-                    style: TextStyle(fontSize: 30.0),
+                    style: TextStyle(fontSize: 30.0, color: buttonTextColor),
                     textAlign: TextAlign.center)),
             _gap,
             ElevatedButton(
                 onPressed: () {
                   return _beschwerde(context);
                 },
-                style: raisedButtonStyle,
                 child: const Text('\nBeschweren\n',
-                    style: TextStyle(fontSize: 30.0),
+                    style: TextStyle(fontSize: 30.0, color: buttonTextColor),
                     textAlign: TextAlign.center)),
             _gap,
             const Text(
@@ -127,9 +113,9 @@ class MainMenu extends ConsumerWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  style: raisedButtonStyle,
-                  child:
-                      const Text('Prost!', style: TextStyle(fontSize: 30.0))),
+                  child: const Text('Prost!',
+                      style:
+                          TextStyle(fontSize: 30.0, color: Color(0xFF000000)))),
             ],
           )));
     }));

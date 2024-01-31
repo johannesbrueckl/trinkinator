@@ -64,7 +64,8 @@ void rules(BuildContext context) {
                   Navigator.pop(context);
                 },
                 child: const Text('Verstanden!',
-                    style: TextStyle(fontSize: 30.0))),
+                    style:
+                        TextStyle(fontSize: 30.0, color: Color(0xFF000000)))),
           ],
         ));
   }));
