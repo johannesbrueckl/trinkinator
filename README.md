@@ -1,3 +1,3 @@
 # trinkinator
 
-A new Flutter project.
+Ein flutter Trinkspiel aus der Zukunft.

@@ -34,7 +34,7 @@ class MainMenu extends ConsumerWidget {
               padding: const EdgeInsets.all(40.0),
               children: <Widget>[
                 SizedBox(
-                  height: height * 0.5,
+                  height: height * 0.375,
                   //width: width * 0.8,
                   child: Image.asset(
                       'assets/images/trinkinator-logo-oval-schaum.png'),
