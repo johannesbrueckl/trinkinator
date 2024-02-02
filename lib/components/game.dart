@@ -52,7 +52,10 @@ class _StartGameState extends ConsumerState {
   Text displayAufgabe() {
     Random random = Random();
     var players = ref.read(playerNamesProvider);
-    var tasks = ref.read(tasksProvider);
+    var settings = ref.read(settingsProvider);
+    var tasks = ref
+        .read(tasksProvider)
+        .where((element) => settings.contains(element.category));
     return Text.rich(
       TextSpan(
         children: <TextSpan>[
@@ -64,7 +67,7 @@ class _StartGameState extends ConsumerState {
                 fontWeight: FontWeight.bold),
           ),
           TextSpan(
-            text: '${tasks[random.nextInt(tasks.length)]}\n',
+            text: '${tasks.elementAt(random.nextInt(tasks.length)).task}\n',
             style: const TextStyle(fontSize: 30.0, color: Colors.black),
           ),
         ],
