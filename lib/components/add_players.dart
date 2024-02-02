@@ -30,6 +30,7 @@ class AddPlayersState extends ConsumerState {
           Padding(
             padding: const EdgeInsets.all(20),
             child: TextField(
+              autofocus: true,
               controller: nameController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
