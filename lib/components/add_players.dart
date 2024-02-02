@@ -24,12 +24,21 @@ class AddPlayersState extends ConsumerState {
   @override
   Widget build(BuildContext context) {
     var players = ref.watch(playerNamesProvider);
+    late FocusNode textFocusNode = FocusNode();
     return Scaffold(
-        appBar: AppBar(),
-        body: Column(children: <Widget>[
+      appBar: AppBar(),
+      body: Column(
+        children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(20),
             child: TextField(
+              focusNode: textFocusNode,
+              textInputAction: TextInputAction.go,
+              onSubmitted: (value) {
+                addPlayer();
+                nameController.clear();
+                textFocusNode.requestFocus();
+              },
               autofocus: true,
               controller: nameController,
               decoration: const InputDecoration(
@@ -45,54 +54,66 @@ class AddPlayersState extends ConsumerState {
               textAlign: TextAlign.center,
             ),
             onPressed: () {
-              if (players.contains(nameController.text.trim())) {
-                log.d(
-                    "player name ${nameController.text.trim()} already exists.");
-                playerNameEmptyAlert(context, playerNameExistsAlertMessage);
-                nameController.clear();
-              } else if (nameController.text.trim().isNotEmpty) {
-                final oldPlayers = ref.read(playerNamesProvider);
-                ref.read(playerNamesProvider.notifier).state = [
-                  ...oldPlayers,
-                  nameController.text.trim()
-                ];
-                log.d("player ${nameController.text} added.");
-                nameController.clear();
-              } else {
-                log.d("player name is empty.");
-                playerNameEmptyAlert(context, playerNameEmptyAlertMessage);
-                nameController.clear();
-              }
+              addPlayer();
+              nameController.clear();
+              textFocusNode.requestFocus();
             },
           ),
           Expanded(
-              child: ListView.builder(
-                  itemCount: players.length,
-                  itemBuilder: (_, int index) {
-                    return Card(
-                        elevation: 3,
-                        margin: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 50),
-                        child: ListTile(
-                            leading: const Icon(Icons.person_2_sharp),
-                            trailing: IconButton(
-                              icon: const Icon(Icons.delete),
-                              color: Colors.red,
-                              iconSize: 30,
-                              splashRadius: 20,
-                              onPressed: () {
-                                final trimedPlayers =
-                                    ref.read(playerNamesProvider);
-                                trimedPlayers.removeAt(index);
-                                ref.read(playerNamesProvider.notifier).state = [
-                                  ...trimedPlayers
-                                ];
-                                log.d("player removed.");
-                              },
-                            ),
-                            title: Text(players.elementAt(index))));
-                  }))
-        ]));
+            child: ListView.builder(
+                itemCount: players.length,
+                itemBuilder: (_, int index) {
+                  return Card(
+                    elevation: 3,
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 50),
+                    child: ListTile(
+                      leading: const Icon(Icons.person_2_sharp),
+                      trailing: IconButton(
+                        icon: const Icon(Icons.delete),
+                        color: Colors.red,
+                        iconSize: 30,
+                        splashRadius: 20,
+                        onPressed: () {
+                          final trimedPlayers = ref.read(playerNamesProvider);
+                          trimedPlayers.removeAt(index);
+                          ref.read(playerNamesProvider.notifier).state = [
+                            ...trimedPlayers
+                          ];
+                          log.d("player removed.");
+                        },
+                      ),
+                      title: Text(
+                        players.elementAt(index),
+                      ),
+                    ),
+                  );
+                }),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void addPlayer() {
+    var players = ref.watch(playerNamesProvider);
+    if (players.contains(nameController.text.trim())) {
+      log.d("player name ${nameController.text.trim()} already exists.");
+      playerNameEmptyAlert(context, playerNameExistsAlertMessage);
+      nameController.clear();
+    } else if (nameController.text.trim().isNotEmpty) {
+      final oldPlayers = ref.read(playerNamesProvider);
+      ref.read(playerNamesProvider.notifier).state = [
+        ...oldPlayers,
+        nameController.text.trim()
+      ];
+      log.d("player ${nameController.text} added.");
+      nameController.clear();
+    } else {
+      log.d("player name is empty.");
+      playerNameEmptyAlert(context, playerNameEmptyAlertMessage);
+      nameController.clear();
+    }
   }
 }
 
