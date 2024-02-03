@@ -5,5 +5,6 @@ export 'game.dart';
 export 'logger.dart';
 export 'main_menu.dart';
 export 'rules.dart';
+export 'settings.dart';
 export 'task.dart';
 

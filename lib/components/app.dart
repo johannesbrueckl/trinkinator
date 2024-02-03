@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:trinkinator/components/e_setting.dart';
-
-import 'package:trinkinator/components/main_menu.dart';
-import 'package:trinkinator/components/game.dart';
-import 'package:trinkinator/components/add_players.dart';
-import 'package:trinkinator/components/task.dart';
+import 'package:trinkinator/components/index.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -45,18 +40,12 @@ class App extends StatelessWidget {
       home: const MainMenu(),
       routes: {
         '/play': (context) => const StartGame(),
-        '/players': (context) => const AddPlayers()
-        /*
-        Players(
-              namen: const [],
-            )
-            */
+        '/players': (context) => const AddPlayers(),
+        '/settings': (context) => const Settings(),
       },
     );
   }
 }
-
-//class AppState extends ChangeNotifier {}
 
 final playerNamesProvider = StateProvider<List<String>>((ref) => []);
 

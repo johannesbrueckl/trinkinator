@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:trinkinator/components/app.dart';
 
 import 'package:trinkinator/components/game.dart';
+import 'package:trinkinator/components/index.dart';
 import 'package:trinkinator/components/rules.dart';
 import 'package:trinkinator/components/add_players.dart';
 
@@ -76,6 +77,20 @@ class MainMenu extends ConsumerWidget {
                         style:
                             TextStyle(fontSize: 30.0, color: buttonTextColor),
                         textAlign: TextAlign.center)),
+                _gap,
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Settings(),
+                      ),
+                    );
+                  },
+                  child: const Text('\nEinstellungen\n',
+                      style: TextStyle(fontSize: 30.0, color: buttonTextColor),
+                      textAlign: TextAlign.center),
+                ),
                 _gap,
                 ElevatedButton(
                   onPressed: () {
