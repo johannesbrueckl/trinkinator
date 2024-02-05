@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:trinkinator/components/app.dart';
 
-import 'package:trinkinator/components/game.dart';
 import 'package:trinkinator/components/index.dart';
-import 'package:trinkinator/components/rules.dart';
-import 'package:trinkinator/components/add_players.dart';
 
 class MainMenu extends ConsumerWidget {
   const MainMenu({super.key});
@@ -38,7 +34,8 @@ class MainMenu extends ConsumerWidget {
                   height: height * 0.375,
                   //width: width * 0.8,
                   child: Image.asset(
-                      'assets/images/trinkinator-logo-oval-schaum.png'),
+                    'assets/images/trinkinator-logo-oval-schaum.png',
+                  ),
                 ),
                 Visibility(
                   replacement: const ElevatedButton(
@@ -132,7 +129,7 @@ class MainMenu extends ConsumerWidget {
                 padding: const EdgeInsets.all(20.0),
                 children: [
                   const Text(
-                    'Kritik wird nicht geduldet, siehe Regel Nr1!\nTrinke 3 Strafschluecke!\n',
+                    'Kritik wird nicht geduldet, siehe Regel Nr.1!\nTrinke 3 Strafschlücke!\n',
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 30.0),
                   ),

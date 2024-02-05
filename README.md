@@ -1,3 +1,4 @@
 # trinkinator
 
-Ein flutter Trinkspiel aus der Zukunft.
+Ein cross platform Trinkspiel aus der Zukunft.
+Ein Freizeitprojekt geschrieben in Flutter und Dart. 

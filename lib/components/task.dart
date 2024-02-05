@@ -1,4 +1,4 @@
-import 'package:trinkinator/components/e_setting.dart';
+import 'package:trinkinator/components/E_SETTING.dart';
 
 class Task {
   late String task;
