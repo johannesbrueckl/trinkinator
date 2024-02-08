@@ -91,7 +91,12 @@ class MainMenu extends ConsumerWidget {
                 _gap,
                 ElevatedButton(
                   onPressed: () {
-                    return rules(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const RulesRefactor(),
+                      ),
+                    );
                   },
                   child: const Text('\nRegeln einsehen\n',
                       style: TextStyle(fontSize: 30.0, color: buttonTextColor),
@@ -108,7 +113,7 @@ class MainMenu extends ConsumerWidget {
                 ),
                 _gap,
                 const Text(
-                  'by Don B',
+                  'Made with love in Vienna',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 12.0),
                 ),

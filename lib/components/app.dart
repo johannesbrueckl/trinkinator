@@ -42,6 +42,7 @@ class App extends StatelessWidget {
         '/play': (context) => const StartGame(),
         '/players': (context) => const AddPlayers(),
         '/settings': (context) => const Settings(),
+        '/rules': (context) => const RulesRefactor(),
       },
     );
   }

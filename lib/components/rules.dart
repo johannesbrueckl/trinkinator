@@ -1,88 +1,149 @@
 import 'package:flutter/material.dart';
+import 'package:chat_bubbles/chat_bubbles.dart';
 
-void rules(BuildContext context) {
-  Navigator.of(context)
-      .push(MaterialPageRoute<void>(builder: (BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
+class RulesRefactor extends StatefulWidget {
+  const RulesRefactor({
+    super.key,
+  });
+
+  @override
+  _RulesRefactor createState() => _RulesRefactor();
+}
+
+class _RulesRefactor extends State<RulesRefactor> {
+  static const Color _senderBubbleColor = Color(0xFF1B97F3);
+  static const Color _notSenderBubbleColor = Color.fromARGB(255, 106, 162, 135);
+  //Color.fromARGB(255, 145, 145, 173);
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       body: ListView(
-          shrinkWrap: true,
-          padding: const EdgeInsets.all(20.0),
-          children: [
-            const Text.rich(
-              TextSpan(
-                style: TextStyle(fontSize: 25.0),
-                children: <TextSpan>[
-                  TextSpan(
-                    text: 'Regelwerk\n\n',
-                    style:
-                        TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
-                  ),
-                  TextSpan(
-                      text:
-                          'Dies sind die heiligen Regeln des Trinkinators, welche von auserwählten besonders trinkfesten Mitgliedern des Stammes der Alkitonen seit Jahrtausenden mündlich weitergegeben werden, seitdem sie im Jahre 80.085 vor Christus das erste Mal destilliertes Schlangengift aus Mammutstoßzähnen getrunken haben.\n\n'),
-                  TextSpan(
-                    text: 'Regel Nr. 1:\n\n',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  TextSpan(
-                      text:
-                          'Die Anweisungen des Trinkinators sind IMMER strikt zu befolgen. Der Trinkinator hat IMMER recht.\nDer Trinkinator ist vollkommen und perfekt. Wenn er das einmal nicht ist, dann nur, weil er dies so will!\nJegliches Diskutieren, Brechen und Anfechten der hier niedergeschriebenen Regeln oder dem Inhalt des Spieles führt automatisch zu 3 Strafschlücken!\n\n'),
-                  TextSpan(
-                    text: 'Regel Nr. 2:\n\n',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  TextSpan(
-                      text:
-                          'Jede Aufgabe muss bis zum Ende durchgeführt werden, auch wenn schon ein Verlierer feststeht.\nEs müssen ALLE Verlierer trinken.\n\n'),
-                  TextSpan(
-                    text: 'Regel Nr. 3:\n\n',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  TextSpan(
-                      text:
-                          'Alle Spieler müssen entweder Getränke mit demselben Alkoholgehalt trinken ODER die Anzahl der Schlücke bis zu einem äquivalenten Alkoholgehalt hochrechnen. Dabei wird mathematisch korrekt gerundet (bis 0,4 abrunden, ab 0,5 aufrunden).\n\n'),
-                  TextSpan(
-                    text:
-                        'Beispiel: Ein Spieler1 trinkt Bier (5 Prozent Alk.) ein Spieler2 trinkt Wein (12 Prozent Alk.) 12/5 = 2,4 --> gerundet 2 --> Spieler1 muss also immer die doppelte Anzahl an Schlücken nehmen oder VOR Spielbeginn Spieler2 davon überzeugen, auch Bier zu trinken.\n\n',
-                    style: TextStyle(fontStyle: FontStyle.italic),
-                  ),
-                  TextSpan(
-                    text: 'Regel Nr. 4:\n\n',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  TextSpan(
-                      text:
-                          'Jeder Spieler verpflichtet sich dazu, stets ehrenhaft und nach bestem Wissen und Gewissen zu handeln und zu antworten.\nLuegen, die im Laufe der Partie aufgedeckt werden, führen zum sofortigen Ausschluss von allen Partien für mindestens 24 Stunden.\n\n'),
-                  TextSpan(
-                    text: 'Regel Nr. 5:\n\n',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  TextSpan(
-                      text:
-                          'Das frühzeitige Austreten aus dem Spiel ist nur mit der Zustimmung ALLER Mitspieler möglich.\nDer Ersteller dieses Spiels, der allmächtige Don B, appelliert an diesem Punkt an die Fairness der Spieler in Bezug auf gesundheitliche Spätfolgen. Trinkt immer verantwortungsvoll!\n\n'),
-                  TextSpan(
-                    text: 'Regel Nr. 6:\n\n',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  TextSpan(
-                      text:
-                          'Bei Ich \'habe noch nie...!\' Aufgaben werden immer 3 Schlücke genommen.\nAlternativ kann man sich VOR jeder Partie auf eine andere Anzahl der Schlücke mit allen Spielern einigen, die dann für alle gilt.\n\n'),
-                ],
-              ),
+        shrinkWrap: true,
+        padding: const EdgeInsets.only(top: 45, right: 8, bottom: 8, left: 8),
+        children: [
+          const BubbleSpecialThree(
+            color: _senderBubbleColor,
+            tail: true,
+            text: 'Können wir jetzt endlich anfangen? 🧐',
+            textStyle: TextStyle(color: Colors.white, fontSize: 16),
+          ),
+          const BubbleSpecialThree(
+            color: _notSenderBubbleColor,
+            tail: true,
+            textStyle: TextStyle(color: Colors.white, fontSize: 16),
+            isSender: false,
+            text: 'Moment, ein paar Spielregeln gibt es da schon noch 🐶☝️',
+          ),
+          const BubbleSpecialThree(
+            color: _senderBubbleColor,
+            tail: true,
+            textStyle: TextStyle(color: Colors.white, fontSize: 16),
+            text: 'okay, dann schieß mal los 🙄',
+          ),
+          const BubbleSpecialThree(
+            color: _notSenderBubbleColor,
+            tail: false,
+            textStyle: TextStyle(color: Colors.white, fontSize: 16),
+            isSender: false,
+            text:
+                'Regel Nr. 1:\nDie Anweisungen des Trinkinators sind IMMER strikt zu befolgen. Der Trinkinator hat IMMER recht. Der Trinkinator ist vollkommen und perfekt. Wenn er das einmal nicht ist, dann nur, weil er dies so will!\nJegliches Diskutieren, Brechen und Anfechten der hier niedergeschriebenen Regeln oder dem Inhalt des Spieles führt automatisch zu 3 Strafschlücken! ',
+          ),
+          const BubbleSpecialThree(
+            color: _notSenderBubbleColor,
+            tail: true,
+            textStyle: TextStyle(color: Colors.white, fontSize: 16),
+            isSender: false,
+            text:
+                'Regel Nr. 2:\nJede Aufgabe muss bis zum Ende durchgeführt werden, auch wenn schon ein Verlierer feststeht.\nEs müssen ALLE Verlierer trinken. 🍾',
+          ),
+          const BubbleSpecialThree(
+            color: _senderBubbleColor,
+            tail: true,
+            textStyle: TextStyle(color: Colors.white, fontSize: 16),
+            text: 'Ich gewinne immer 💪',
+          ),
+          const BubbleSpecialThree(
+            color: _notSenderBubbleColor,
+            tail: false,
+            textStyle: TextStyle(color: Colors.white, fontSize: 16),
+            isSender: false,
+            text:
+                'Regel Nr. 3:\nAlle Spieler müssen entweder Getränke mit demselben Alkoholgehalt trinken ODER die Anzahl der Schlücke bis zu einem äquivalenten Alkoholgehalt hochrechnen. Dabei wird mathematisch korrekt gerundet (bis 0,5 abrunden, ab 0,5 aufrunden).',
+          ),
+          const BubbleSpecialThree(
+            color: _notSenderBubbleColor,
+            tail: true,
+            textStyle: TextStyle(color: Colors.white, fontSize: 16),
+            isSender: false,
+            text:
+                'Beispiel: Tom 👨 trinkt Bier 🍺 (5 Prozent Alk.) Laura 👩 trinkt Wein 🍷 (12 Prozent Alk.) 12/5 = 2,4 --> gerundet 2 --> Tom 👨 muss also immer die doppelte Anzahl an Schlücken nehmen oder VOR Spielbeginn Laura 👩 davon überzeugen, auch Bier 🍺 zu trinken. 🧑‍🔬🧪',
+          ),
+          const BubbleSpecialThree(
+            color: _senderBubbleColor,
+            tail: true,
+            textStyle: TextStyle(color: Colors.white, fontSize: 16),
+            text: 'Puh, ganz schön kompliziert 🤔',
+          ),
+          const BubbleSpecialThree(
+            color: _notSenderBubbleColor,
+            tail: false,
+            textStyle: TextStyle(color: Colors.white, fontSize: 16),
+            isSender: false,
+            text:
+                'Regel Nr. 4:\nJeder Spieler verpflichtet sich dazu, stets ehrenhaft und nach bestem Wissen und Gewissen zu handeln und zu antworten.\nLügen, die im Laufe der Partie aufgedeckt werden, führen zum sofortigen Ausschluss von allen Partien für mindestens 24 Stunden. 👮‍♂️',
+          ),
+          const BubbleSpecialThree(
+            color: _notSenderBubbleColor,
+            tail: true,
+            textStyle: TextStyle(color: Colors.white, fontSize: 16),
+            isSender: false,
+            text:
+                'Regel Nr. 5:\nDas frühzeitige Austreten aus dem Spiel ist nur mit der Zustimmung ALLER Mitspieler möglich.\nDer Ersteller dieses Spiels, der allmächtige Don B, appelliert an diesem Punkt an die Fairness der Spieler in Bezug auf gesundheitliche Spätfolgen. Trinkt immer verantwortungsvoll! 😇',
+          ),
+          const BubbleSpecialThree(
+            color: _senderBubbleColor,
+            tail: true,
+            textStyle: TextStyle(color: Colors.white, fontSize: 16),
+            text: 'Wie viele denn noch? 🤬',
+          ),
+          const BubbleSpecialThree(
+            color: _notSenderBubbleColor,
+            tail: true,
+            textStyle: TextStyle(color: Colors.white, fontSize: 16),
+            isSender: false,
+            text:
+                'Regel Nr. 6:\nBei Ich \'habe noch nie...!\' Aufgaben werden immer 3 Schlücke genommen.\nAlternativ kann man sich VOR jeder Partie auf eine andere Anzahl der Schlücke mit allen Spielern einigen, die dann für alle gilt.',
+          ),
+          const BubbleSpecialThree(
+            color: _senderBubbleColor,
+            tail: true,
+            textStyle: TextStyle(color: Colors.white, fontSize: 16),
+            text:
+                'Kann ich mir eh nicht alles merken. Darf ich jetzt ENDLICH loslegen? 😎',
+          ),
+          const BubbleSpecialThree(
+            color: _notSenderBubbleColor,
+            tail: true,
+            textStyle: TextStyle(color: Colors.white, fontSize: 16),
+            isSender: false,
+            text: 'Und am allerwichtigsten: Habt Spaß! 🎉🍻❤️',
+          ),
+          Container(
+            margin: const EdgeInsets.only(
+              top: 10,
+              right: 50,
+              bottom: 30,
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('Verstanden!',
-                  style: TextStyle(
-                    fontSize: 30.0,
-                    color: Color(0xFF000000),
-                  ),
-                  textAlign: TextAlign.center),
+            alignment: Alignment.topRight,
+            child: ElevatedButton(
+              onPressed: Navigator.of(context).pop,
+              child: const Text('ja, ja, los jetzt!'),
             ),
-          ]),
-    );
-  }));
+          )
+        ],
+      ));
 }
