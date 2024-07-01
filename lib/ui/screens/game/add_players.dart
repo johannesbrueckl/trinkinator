@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
-import 'package:trinkinator/components/app.dart';
+import 'package:trinkinator/app/providers.dart';
 
 class AddPlayers extends ConsumerStatefulWidget {
   const AddPlayers({super.key});
@@ -84,7 +84,7 @@ class AddPlayersState extends ConsumerState {
                         },
                       ),
                       title: Text(
-                        players.elementAt(index),
+                        players.elementAt(index).toString(),
                       ),
                     ),
                   );

@@ -1,60 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:trinkinator/components/index.dart';
+import 'package:trinkinator/core/enums/setting.dart';
+import 'package:trinkinator/core/models/task.dart';
 
-class App extends StatelessWidget {
-  const App({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Trinkinator',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: const ColorScheme.light(
-          primary: Color(0xFFf5b7b1),
-          tertiary: Color(0xFFf8f8f8),
-          background: Color(0xFFaed6f1),
-          onPrimary: Color(0xFF000000),
-          outline: Color(0xFFf8f8f8),
-        ),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFFaed6f1),
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-              foregroundColor: const Color(0xFFfff1ee),
-              backgroundColor: const Color(0xFFf5b7b1),
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(18)),
-                  side: BorderSide(color: Color(0xFFf8f8f8))),
-              elevation: 5,
-              textStyle: const TextStyle(
-                //this is bugged, color needs setting manual.
-                color: Colors.black,
-                fontSize: 20.0,
-              )),
-        ),
-      ),
-      home: const MainMenu(),
-      routes: {
-        '/play': (context) => const StartGame(),
-        '/players': (context) => const AddPlayers(),
-        '/settings': (context) => const Settings(),
-        '/rules': (context) => const RulesRefactor(),
-      },
-    );
-  }
-}
-
-final playerNamesProvider = StateProvider<List<String>>((ref) => []);
-
-final settingsProvider = StateProvider<List<Setting>>((ref) => [
-      Setting.categoryNeutral,
-    ]);
-
-final tasksProvider = StateProvider<List<Task>>((ref) => [
+class Tasks {
+  List<Task> fetchTasks() {
+    return [
       //33 Aufgaben.
       Task('Trinke selbst 1 Schluck.'),
       Task('Trinke selbst 2 Schlücke.'),
@@ -118,4 +67,6 @@ final tasksProvider = StateProvider<List<Task>>((ref) => [
       Task(
           'Kondom gerissen! Dir ist beim Liebesspiel das Kondom gerissen. Trinke auf Ex und einen Kurzen um die Pille danach zu kaufen, ODER trinke ab nächster Runde jedes Mal wenn Du an der Reihe bist einen Kurzen bis zum Ende des Spieles, um Deine Alimente zu begleichen.',
           category: Setting.categoryNSFW),
-    ]);
+    ];
+  }
+}

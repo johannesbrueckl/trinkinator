@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:trinkinator/components/app.dart';
+import 'package:trinkinator/app/providers.dart';
 
 class StartGame extends ConsumerStatefulWidget {
   const StartGame({super.key});
@@ -54,7 +54,7 @@ class _StartGameState extends ConsumerState {
     var players = ref.read(playerNamesProvider);
     var settings = ref.read(settingsProvider);
     var tasks = ref
-        .read(tasksProvider)
+        .read(tasksListProvider)
         .where((element) => settings.contains(element.category));
     return Text.rich(
       TextSpan(

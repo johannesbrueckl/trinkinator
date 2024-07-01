@@ -1,4 +1,4 @@
-import 'package:trinkinator/components/E_SETTING.dart';
+import 'package:trinkinator/core/enums/setting.dart';
 
 class Task {
   late String task;

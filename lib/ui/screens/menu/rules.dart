@@ -134,7 +134,7 @@ class _RulesRefactor extends State<RulesRefactor> {
           ),
           Container(
             margin: const EdgeInsets.only(
-              top: 10,
+              top: 20,
               right: 50,
               bottom: 30,
             ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
-import 'package:trinkinator/components/app.dart';
-import 'package:trinkinator/components/E_SETTING.dart';
+import 'package:trinkinator/app/providers.dart';
+import 'package:trinkinator/core/enums/setting.dart';
 
 class Settings extends ConsumerStatefulWidget {
   const Settings({super.key});

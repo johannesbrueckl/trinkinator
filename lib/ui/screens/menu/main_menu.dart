@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:trinkinator/app/providers.dart';
+import 'package:trinkinator/ui/screens/game/add_players.dart';
+import 'package:trinkinator/ui/screens/game/game.dart';
+import 'package:trinkinator/ui/screens/settings/settings.dart';
 
-import 'package:trinkinator/components/index.dart';
+import 'rules.dart';
 
 class MainMenu extends ConsumerWidget {
   const MainMenu({super.key});
