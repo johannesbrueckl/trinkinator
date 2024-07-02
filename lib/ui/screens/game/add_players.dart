@@ -47,17 +47,17 @@ class AddPlayersState extends ConsumerState {
               ),
             ),
           ),
-          ElevatedButton(
-            child: const Text(
-              'Hinzufügen',
-              style: TextStyle(color: Color(0xFF000000)),
-              textAlign: TextAlign.center,
-            ),
+          FloatingActionButton.extended(
             onPressed: () {
               addPlayer();
               nameController.clear();
               textFocusNode.requestFocus();
             },
+            label: const Text(
+              'Hinzufügen',
+              style: TextStyle(fontSize: 20.0),
+            ),
+            icon: const Icon(Icons.add),
           ),
           Expanded(
             child: ListView.builder(

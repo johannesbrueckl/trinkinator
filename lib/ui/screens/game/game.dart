@@ -41,6 +41,7 @@ class _StartGameState extends ConsumerState {
                   backgroundColor: Colors.teal,
                   disabledForegroundColor: Colors.grey.withOpacity(0.38),
                   textStyle: const TextStyle(fontSize: 40),
+                  minimumSize: const Size(44, 44),
                 ),
                 child: const Text('Nächste Runde'),
               )

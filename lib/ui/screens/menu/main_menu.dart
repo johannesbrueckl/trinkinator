@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:trinkinator/app/providers.dart';
-import 'package:trinkinator/ui/screens/game/add_players.dart';
-import 'package:trinkinator/ui/screens/game/game.dart';
-import 'package:trinkinator/ui/screens/settings/settings.dart';
-
-import 'rules.dart';
 
 class MainMenu extends ConsumerWidget {
   const MainMenu({super.key});
@@ -38,7 +33,7 @@ class MainMenu extends ConsumerWidget {
                   height: height * 0.375,
                   //width: width * 0.8,
                   child: Image.asset(
-                    'assets/images/trinkinator-logo-oval-schaum.png',
+                    'assets/images/trinkinator-logo-new.png',
                   ),
                 ),
                 Visibility(
@@ -51,12 +46,7 @@ class MainMenu extends ConsumerWidget {
                   visible: players.isNotEmpty,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const StartGame(),
-                        ),
-                      );
+                      Navigator.pushNamed(context, '/play');
                     },
                     child: const Text('\nAlkohol fliessen lassen\n',
                         style:
@@ -67,12 +57,7 @@ class MainMenu extends ConsumerWidget {
                 _gap,
                 ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AddPlayers(),
-                        ),
-                      );
+                      Navigator.pushNamed(context, '/players');
                     },
                     child: const Text('\nSpieler hinzufügen\n',
                         style:
@@ -81,12 +66,7 @@ class MainMenu extends ConsumerWidget {
                 _gap,
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Settings(),
-                      ),
-                    );
+                    Navigator.pushNamed(context, '/settings');
                   },
                   child: const Text('\nEinstellungen\n',
                       style: TextStyle(fontSize: 30.0, color: buttonTextColor),
@@ -95,12 +75,7 @@ class MainMenu extends ConsumerWidget {
                 _gap,
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const RulesRefactor(),
-                      ),
-                    );
+                    Navigator.pushNamed(context, '/rules');
                   },
                   child: const Text('\nRegeln einsehen\n',
                       style: TextStyle(fontSize: 30.0, color: buttonTextColor),
@@ -109,7 +84,7 @@ class MainMenu extends ConsumerWidget {
                 _gap,
                 ElevatedButton(
                   onPressed: () {
-                    return _beschwerde(context);
+                    Navigator.pushNamed(context, '/complain');
                   },
                   child: const Text('\nBeschweren\n',
                       style: TextStyle(fontSize: 30.0, color: buttonTextColor),
@@ -124,39 +99,6 @@ class MainMenu extends ConsumerWidget {
               ]),
         ),
       ),
-    );
-  }
-
-  void _beschwerde(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute<void>(builder: (BuildContext context) {
-        return Scaffold(
-          appBar: AppBar(),
-          body: Center(
-            child: ListView(
-                shrinkWrap: true,
-                padding: const EdgeInsets.all(20.0),
-                children: [
-                  const Text(
-                    'Kritik wird nicht geduldet, siehe Regel Nr.1!\nTrinke 3 Strafschlücke!\n',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 30.0),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Text('Prost!',
-                        style: TextStyle(
-                          fontSize: 30.0,
-                          color: Color(0xFF000000),
-                        ),
-                        textAlign: TextAlign.center),
-                  ),
-                ]),
-          ),
-        );
-      }),
     );
   }
 }

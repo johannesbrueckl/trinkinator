@@ -16,25 +16,26 @@ class App extends StatelessWidget {
           tertiary: Color(0xFFf8f8f8),
           background: Color(0xFFaed6f1),
           onPrimary: Color(0xFF000000),
-          outline: Color(0xFFf8f8f8),
+          outline: Color.fromARGB(255, 146, 146, 146),
         ),
         appBarTheme: const AppBarTheme(
           backgroundColor: Color(0xFFaed6f1),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-              foregroundColor: const Color(0xFFfff1ee),
-              backgroundColor: const Color(0xFFf5b7b1),
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(18)),
-                  side: BorderSide(color: Color(0xFFf8f8f8))),
-              elevation: 5,
-              textStyle: const TextStyle(
-                //this is bugged, color needs setting manual.
-                color: Colors.black,
-                fontSize: 20.0,
-              )),
+            foregroundColor: const Color(0xFFfff1ee),
+            backgroundColor: const Color(0xFFf5b7b1),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(18)),
+                side: BorderSide(color: Color(0xFFf8f8f8))),
+            elevation: 5,
+            textStyle: const TextStyle(
+              //this is bugged, color needs setting manual.
+              color: Colors.black,
+              fontSize: 20.0,
+            ),
+          ),
         ),
       ),
       home: const MainMenu(),
