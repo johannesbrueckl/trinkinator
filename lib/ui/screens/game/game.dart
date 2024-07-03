@@ -12,7 +12,8 @@ class StartGame extends ConsumerStatefulWidget {
 }
 
 class _StartGameState extends ConsumerState {
-  var roundCounter = 0;
+  var roundCounter = 1;
+  var playerCounter = 0;
   @override
   Widget build(BuildContext context) {
     var players = ref.read(playerNamesProvider);
@@ -20,32 +21,35 @@ class _StartGameState extends ConsumerState {
       appBar: AppBar(),
       body: Center(
         child: ListView(
-            shrinkWrap: true,
-            padding: const EdgeInsets.all(20.0),
-            children: [
-              displayAufgabe(),
-              TextButton(
-                onPressed: () {
-                  if (roundCounter == players.length - 1) {
-                    setState(() {
-                      roundCounter = 0;
-                    });
-                  } else {
-                    setState(() {
-                      ++roundCounter;
-                    });
-                  }
-                },
-                style: TextButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Colors.teal,
-                  disabledForegroundColor: Colors.grey.withOpacity(0.38),
-                  textStyle: const TextStyle(fontSize: 40),
-                  minimumSize: const Size(44, 44),
-                ),
-                child: const Text('Nächste Runde'),
-              )
-            ]),
+          shrinkWrap: true,
+          padding: const EdgeInsets.all(20.0),
+          children: [
+            displayAufgabe(),
+            TextButton(
+              onPressed: () {
+                if (playerCounter == players.length - 1) {
+                  setState(() {
+                    playerCounter = 0;
+                    ++roundCounter;
+                  });
+                } else {
+                  setState(() {
+                    ++playerCounter;
+                    ++roundCounter;
+                  });
+                }
+              },
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.teal,
+                disabledForegroundColor: Colors.grey.withOpacity(0.38),
+                textStyle: const TextStyle(fontSize: 40),
+                minimumSize: const Size(44, 44),
+              ),
+              child: const Text('Nächste Runde'),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -59,9 +63,9 @@ class _StartGameState extends ConsumerState {
         .where((element) => settings.contains(element.category));
     return Text.rich(
       TextSpan(
-        children: <TextSpan>[
+        children: [
           TextSpan(
-            text: '${players[roundCounter]}\n\n',
+            text: '${players[playerCounter]}\n\n',
             style: const TextStyle(
                 fontSize: 35.0,
                 color: Color.fromARGB(255, 227, 70, 22),

@@ -48,6 +48,12 @@ class MainMenu extends ConsumerWidget {
                     onPressed: () {
                       Navigator.pushNamed(context, '/play');
                     },
+                    style: ButtonStyle(
+                      foregroundColor: MaterialStateProperty.all<Color>(
+                          const Color.fromARGB(255, 196, 239, 191)),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          const Color.fromARGB(255, 137, 247, 135)),
+                    ),
                     child: const Text('\nAlkohol fliessen lassen\n',
                         style:
                             TextStyle(fontSize: 30.0, color: buttonTextColor),
@@ -77,7 +83,7 @@ class MainMenu extends ConsumerWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, '/rules');
                   },
-                  child: const Text('\nRegeln einsehen\n',
+                  child: const Text('\nRegeln\n',
                       style: TextStyle(fontSize: 30.0, color: buttonTextColor),
                       textAlign: TextAlign.center),
                 ),
