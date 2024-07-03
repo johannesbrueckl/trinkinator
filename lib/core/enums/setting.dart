@@ -3,4 +3,6 @@ enum Setting {
   categoryNeverEver,
   categoryExtreme,
   categoryNeutral,
+  categoryTruth,
+  categoryVote,
 }

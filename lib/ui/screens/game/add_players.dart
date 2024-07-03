@@ -16,6 +16,10 @@ class AddPlayersState extends ConsumerState {
   final TextEditingController nameController = TextEditingController();
   final log = Logger();
 
+  static const _gap = SizedBox(
+    width: 20,
+  );
+
   static const String playerNameEmptyAlertMessage =
       "Spielername darf nicht leer sein";
   static const String playerNameExistsAlertMessage =
@@ -43,7 +47,18 @@ class AddPlayersState extends ConsumerState {
               controller: nameController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color.fromARGB(255, 120, 1, 1),
+                  ),
+                ),
                 labelText: 'Spielername',
+                labelStyle: TextStyle(
+                  color: Colors.black,
+                ),
+                floatingLabelStyle: TextStyle(
+                  color: Color.fromARGB(255, 253, 101, 87),
+                ),
               ),
             ),
           ),
@@ -71,9 +86,7 @@ class AddPlayersState extends ConsumerState {
                   backgroundColor: const Color.fromARGB(255, 137, 247, 135),
                 ),
               ),
-              const SizedBox(
-                width: 20,
-              ),
+              _gap,
               FloatingActionButton.extended(
                 onPressed: () {
                   addPlayer();

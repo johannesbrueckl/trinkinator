@@ -21,16 +21,19 @@ class _Complain extends State<Complain> {
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 30.0),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Text('Prost!',
-                      style: TextStyle(
-                        fontSize: 30.0,
-                        color: Color(0xFF000000),
-                      ),
-                      textAlign: TextAlign.center),
+                SizedBox(
+                  height: 60,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text('Prost!',
+                        style: TextStyle(
+                          fontSize: 30.0,
+                          color: Color(0xFF000000),
+                        ),
+                        textAlign: TextAlign.center),
+                  ),
                 ),
               ]),
         ),

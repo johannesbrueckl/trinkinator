@@ -23,24 +23,100 @@ class SettingsState extends ConsumerState {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CheckboxListTile(
-              title: const Text('Never have I Ever'),
-              value: settings.contains(Setting.categoryNeverEver),
-              onChanged: (bool? value) {
-                _toggleSetting(Setting.categoryNeverEver);
-              }),
-          CheckboxListTile(
-              title: const Text('Extreme'),
-              value: settings.contains(Setting.categoryExtreme),
-              onChanged: (bool? value) {
-                _toggleSetting(Setting.categoryExtreme);
-              }),
-          CheckboxListTile(
-              title: const Text('NSFW'),
-              value: settings.contains(Setting.categoryNSFW),
-              onChanged: (bool? value) {
-                _toggleSetting(Setting.categoryNSFW);
-              }),
+          Padding(
+            padding: const EdgeInsets.only(
+                left: 20.0,
+                top: 10.0,
+                right: 20.0,
+                bottom: 25.0), // Custom padding
+            child: Material(
+              elevation: 7.0,
+              color: const Color.fromARGB(255, 237, 244, 247),
+              borderRadius: BorderRadius.circular(12.0),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+                child: Text(
+                  'Wählt aus dieser Liste welche Spielmodi ihr zusätzlich zum Standardmodus spielen möchtet.',
+                  style: TextStyle(fontSize: 22), // Text styling
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
+            child: Material(
+              elevation: 5.0,
+              color: const Color.fromARGB(255, 222, 241, 249),
+              borderRadius: BorderRadius.circular(12.0),
+              child: CheckboxListTile(
+                title: const Text('Ich hab noch nie..'),
+                value: settings.contains(Setting.categoryNeverEver),
+                onChanged: (bool? value) {
+                  _toggleSetting(Setting.categoryNeverEver);
+                },
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
+            child: Material(
+              elevation: 5.0,
+              color: const Color.fromARGB(255, 222, 241, 249),
+              borderRadius: BorderRadius.circular(12.0),
+              child: CheckboxListTile(
+                title: const Text('Extrem'),
+                value: settings.contains(Setting.categoryExtreme),
+                onChanged: (bool? value) {
+                  _toggleSetting(Setting.categoryExtreme);
+                },
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
+            child: Material(
+              elevation: 5.0,
+              color: const Color.fromARGB(255, 222, 241, 249),
+              borderRadius: BorderRadius.circular(12.0),
+              child: CheckboxListTile(
+                title: const Text('NSFW'),
+                value: settings.contains(Setting.categoryNSFW),
+                onChanged: (bool? value) {
+                  _toggleSetting(Setting.categoryNSFW);
+                },
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
+            child: Material(
+              elevation: 5.0,
+              color: const Color.fromARGB(255, 222, 241, 249),
+              borderRadius: BorderRadius.circular(12.0),
+              child: CheckboxListTile(
+                title: const Text('Abstimmung'),
+                value: settings.contains(Setting.categoryVote),
+                onChanged: (bool? value) {
+                  _toggleSetting(Setting.categoryVote);
+                },
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
+            child: Material(
+              elevation: 5.0,
+              color: const Color.fromARGB(255, 222, 241, 249),
+              borderRadius: BorderRadius.circular(12.0),
+              child: CheckboxListTile(
+                title: const Text('Wahrheit'),
+                value: settings.contains(Setting.categoryTruth),
+                onChanged: (bool? value) {
+                  _toggleSetting(Setting.categoryTruth);
+                },
+              ),
+            ),
+          ),
         ],
       ),
     );

@@ -36,65 +36,84 @@ class MainMenu extends ConsumerWidget {
                     'assets/images/trinkinator-logo-new.png',
                   ),
                 ),
-                Visibility(
-                  replacement: const ElevatedButton(
-                    onPressed: null,
-                    child: Text('\nKeine Spieler hinzugefügt\n',
-                        style: TextStyle(fontSize: 30.0),
-                        textAlign: TextAlign.center),
-                  ),
-                  visible: players.isNotEmpty,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/play');
-                    },
-                    style: ButtonStyle(
-                      foregroundColor: MaterialStateProperty.all<Color>(
-                          const Color.fromARGB(255, 196, 239, 191)),
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          const Color.fromARGB(255, 137, 247, 135)),
+                SizedBox(
+                  height: 90,
+                  child: Visibility(
+                    replacement: const ElevatedButton(
+                      onPressed: null,
+                      child: Text('Keine Spieler hinzugefügt',
+                          style: TextStyle(fontSize: 30.0),
+                          textAlign: TextAlign.center),
                     ),
-                    child: const Text('\nAlkohol fliessen lassen\n',
-                        style:
-                            TextStyle(fontSize: 30.0, color: buttonTextColor),
-                        textAlign: TextAlign.center),
+                    visible: players.isNotEmpty,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/play');
+                      },
+                      style: ButtonStyle(
+                        foregroundColor: MaterialStateProperty.all<Color>(
+                            const Color.fromARGB(255, 196, 239, 191)),
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            const Color.fromARGB(255, 137, 247, 135)),
+                      ),
+                      child: const Text('Alkohol fliessen lassen',
+                          style:
+                              TextStyle(fontSize: 30.0, color: buttonTextColor),
+                          textAlign: TextAlign.center),
+                    ),
                   ),
                 ),
                 _gap,
-                ElevatedButton(
+                SizedBox(
+                  height: 90,
+                  child: ElevatedButton(
                     onPressed: () {
                       Navigator.pushNamed(context, '/players');
                     },
-                    child: const Text('\nSpieler hinzufügen\n',
+                    child: const Text('Spieler hinzufügen',
                         style:
                             TextStyle(fontSize: 30.0, color: buttonTextColor),
-                        textAlign: TextAlign.center)),
-                _gap,
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/settings');
-                  },
-                  child: const Text('\nEinstellungen\n',
-                      style: TextStyle(fontSize: 30.0, color: buttonTextColor),
-                      textAlign: TextAlign.center),
+                        textAlign: TextAlign.center),
+                  ),
                 ),
                 _gap,
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/rules');
-                  },
-                  child: const Text('\nRegeln\n',
-                      style: TextStyle(fontSize: 30.0, color: buttonTextColor),
-                      textAlign: TextAlign.center),
+                SizedBox(
+                  height: 90,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/settings');
+                    },
+                    child: const Text('Einstellungen',
+                        style:
+                            TextStyle(fontSize: 30.0, color: buttonTextColor),
+                        textAlign: TextAlign.center),
+                  ),
                 ),
                 _gap,
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/complain');
-                  },
-                  child: const Text('\nBeschweren\n',
-                      style: TextStyle(fontSize: 30.0, color: buttonTextColor),
-                      textAlign: TextAlign.center),
+                SizedBox(
+                  height: 90,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/rules');
+                    },
+                    child: const Text('Regeln',
+                        style:
+                            TextStyle(fontSize: 30.0, color: buttonTextColor),
+                        textAlign: TextAlign.center),
+                  ),
+                ),
+                _gap,
+                SizedBox(
+                  height: 90,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/complain');
+                    },
+                    child: const Text('Beschweren',
+                        style:
+                            TextStyle(fontSize: 30.0, color: buttonTextColor),
+                        textAlign: TextAlign.center),
+                  ),
                 ),
                 _gap,
                 const Text(

@@ -14,6 +14,8 @@ class StartGame extends ConsumerStatefulWidget {
 class _StartGameState extends ConsumerState {
   var roundCounter = 1;
   var playerCounter = 0;
+  static const _gap = SizedBox(height: 20);
+
   @override
   Widget build(BuildContext context) {
     var players = ref.read(playerNamesProvider);
@@ -24,7 +26,16 @@ class _StartGameState extends ConsumerState {
           shrinkWrap: true,
           padding: const EdgeInsets.all(20.0),
           children: [
-            displayAufgabe(),
+            Material(
+              elevation: 5.0,
+              color: const Color.fromARGB(255, 222, 241, 249),
+              borderRadius: BorderRadius.circular(12.0),
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: displayAufgabe(),
+              ),
+            ),
+            _gap,
             TextButton(
               onPressed: () {
                 if (playerCounter == players.length - 1) {
@@ -44,7 +55,7 @@ class _StartGameState extends ConsumerState {
                 backgroundColor: Colors.teal,
                 disabledForegroundColor: Colors.grey.withOpacity(0.38),
                 textStyle: const TextStyle(fontSize: 40),
-                minimumSize: const Size(44, 44),
+                minimumSize: const Size(80, 80),
               ),
               child: const Text('Nächste Runde'),
             ),
@@ -65,7 +76,7 @@ class _StartGameState extends ConsumerState {
       TextSpan(
         children: [
           TextSpan(
-            text: '${players[playerCounter]}\n\n',
+            text: '${players[playerCounter]}\n',
             style: const TextStyle(
                 fontSize: 35.0,
                 color: Color.fromARGB(255, 227, 70, 22),
