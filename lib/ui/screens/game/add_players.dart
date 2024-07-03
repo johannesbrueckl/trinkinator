@@ -62,44 +62,48 @@ class AddPlayersState extends ConsumerState {
               ),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Visibility(
-                visible: players.isNotEmpty,
-                child: FloatingActionButton.extended(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/play');
-                  },
-                  label: const Text(
-                    'Spielen',
-                    style: TextStyle(
-                      fontSize: 20.0,
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Visibility(
+                  visible: players.isNotEmpty,
+                  child: FloatingActionButton.extended(
+                    onPressed: () {
+                      textFocusNode.unfocus();
+                      Navigator.pushNamed(context, '/play');
+                    },
+                    label: const Text(
+                      'Spielen',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.black,
+                      ),
+                    ),
+                    icon: const Icon(
+                      Icons.play_arrow_outlined,
                       color: Colors.black,
                     ),
+                    foregroundColor: const Color.fromARGB(255, 196, 239, 191),
+                    backgroundColor: const Color.fromARGB(255, 137, 247, 135),
                   ),
-                  icon: const Icon(
-                    Icons.play_arrow_outlined,
-                    color: Colors.black,
+                ),
+                _gap,
+                FloatingActionButton.extended(
+                  onPressed: () {
+                    addPlayer();
+                    nameController.clear();
+                    textFocusNode.requestFocus();
+                  },
+                  label: const Text(
+                    'Hinzufügen',
+                    style: TextStyle(fontSize: 20.0),
                   ),
-                  foregroundColor: const Color.fromARGB(255, 196, 239, 191),
-                  backgroundColor: const Color.fromARGB(255, 137, 247, 135),
+                  icon: const Icon(Icons.add),
                 ),
-              ),
-              _gap,
-              FloatingActionButton.extended(
-                onPressed: () {
-                  addPlayer();
-                  nameController.clear();
-                  textFocusNode.requestFocus();
-                },
-                label: const Text(
-                  'Hinzufügen',
-                  style: TextStyle(fontSize: 20.0),
-                ),
-                icon: const Icon(Icons.add),
-              ),
-            ],
+              ],
+            ),
           ),
           Expanded(
             child: ListView.builder(
