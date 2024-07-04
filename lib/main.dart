@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
 void main() {
-  Logger.level = Level.debug;
+  Logger.level = Level.off;
   runApp(
     const ProviderScope(
       child: MaterialApp(

@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:trinkinator/app/providers.dart';
+import 'package:flutter/services.dart';
 
 class StartGame extends ConsumerStatefulWidget {
   const StartGame({super.key});
@@ -19,6 +20,7 @@ class _StartGameState extends ConsumerState {
   @override
   Widget build(BuildContext context) {
     var players = ref.read(playerNamesProvider);
+    SystemChannels.textInput.invokeMethod('TextInput.hide');
     return Scaffold(
       appBar: AppBar(),
       body: Center(

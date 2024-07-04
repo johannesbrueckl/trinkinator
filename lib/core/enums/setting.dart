@@ -5,4 +5,5 @@ enum Setting {
   categoryNeutral,
   categoryTruth,
   categoryVote,
+  categoryCustom,
 }

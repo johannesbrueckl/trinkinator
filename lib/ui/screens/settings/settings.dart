@@ -117,6 +117,39 @@ class SettingsState extends ConsumerState {
               ),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
+            child: Material(
+              elevation: 5.0,
+              color: const Color.fromARGB(255, 222, 241, 249),
+              borderRadius: BorderRadius.circular(12.0),
+              child: CheckboxListTile(
+                title: const Text('Eigene Aufgaben'),
+                value: settings.contains(Setting.categoryCustom),
+                onChanged: (bool? value) {
+                  _toggleSetting(Setting.categoryCustom);
+                },
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+                left: 20.0,
+                top: 50.0,
+                right: 20.0,
+                bottom: 25.0), // Custom padding
+            child: SizedBox(
+              height: 90,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/addTask');
+                },
+                child: const Text('Eigene Aufgaben hinzufügen',
+                    style: TextStyle(fontSize: 22.0, color: Colors.black),
+                    textAlign: TextAlign.center),
+              ),
+            ),
+          ),
         ],
       ),
     );

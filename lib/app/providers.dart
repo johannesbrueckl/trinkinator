@@ -7,10 +7,16 @@ final tasksProvider = StateProvider<Tasks>((ref) {
   return Tasks();
 });
 
+final tasksListRawProvider = StateProvider<List<Task>>((ref) {
+  return Tasks().tasks;
+});
+
 final tasksListProvider = StateProvider<List<Task>>((ref) {
   final taskProvider = ref.watch(tasksProvider);
   return taskProvider.fetchTasks();
 });
+
+final customTaskCounter = StateProvider<int>((ref) => 0);
 
 final playerNamesProvider = StateProvider<List<String>>((ref) => []);
 

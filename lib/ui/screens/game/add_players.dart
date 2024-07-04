@@ -71,7 +71,6 @@ class AddPlayersState extends ConsumerState {
                   visible: players.isNotEmpty,
                   child: FloatingActionButton.extended(
                     onPressed: () {
-                      textFocusNode.unfocus();
                       Navigator.pushNamed(context, '/play');
                     },
                     label: const Text(
