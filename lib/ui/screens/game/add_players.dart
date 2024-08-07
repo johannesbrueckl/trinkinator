@@ -70,6 +70,7 @@ class AddPlayersState extends ConsumerState {
                 Visibility(
                   visible: players.isNotEmpty,
                   child: FloatingActionButton.extended(
+                    heroTag: "play",
                     onPressed: () {
                       Navigator.pushNamed(context, '/play');
                     },
@@ -90,6 +91,7 @@ class AddPlayersState extends ConsumerState {
                 ),
                 _gap,
                 FloatingActionButton.extended(
+                  heroTag: "addPlayer",
                   onPressed: () {
                     addPlayer();
                     nameController.clear();

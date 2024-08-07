@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:trinkinator/app/providers.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/foundation.dart';
 
 class StartGame extends ConsumerStatefulWidget {
   const StartGame({super.key});
@@ -18,6 +19,31 @@ class _StartGameState extends ConsumerState {
   static const _gap = SizedBox(height: 20);
 
   @override
+  void initState() {
+    super.initState();
+    if (defaultTargetPlatform == TargetPlatform.android ||
+        defaultTargetPlatform == TargetPlatform.iOS) {
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.landscapeLeft,
+      ]);
+    }
+  }
+
+  @override
+  void dispose() {
+    if (defaultTargetPlatform == TargetPlatform.android ||
+        defaultTargetPlatform == TargetPlatform.iOS) {
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown,
+        DeviceOrientation.landscapeLeft,
+        DeviceOrientation.landscapeRight,
+      ]);
+    }
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var players = ref.read(playerNamesProvider);
     SystemChannels.textInput.invokeMethod('TextInput.hide');
@@ -26,7 +52,8 @@ class _StartGameState extends ConsumerState {
       body: Center(
         child: ListView(
           shrinkWrap: true,
-          padding: const EdgeInsets.all(20.0),
+          padding:
+              const EdgeInsets.only(left: 20, top: 0, right: 20, bottom: 20),
           children: [
             Material(
               elevation: 5.0,
